@@ -1,0 +1,38 @@
+<?php
+$blog = $block->getBlog();
+?>
+<div class="blog-av-info">
+    <div class="page-main">
+        <h2><?php echo __('WATCH & LISTEN'); ?></h2>
+        <div class="blog-av-details">
+            <div class="blog-video">
+                <div class="video-container"><iframe width="560" height="315" src="<?= $blog->getUrlYoutube() ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+            <div class="blog-audio">
+<!--                Media-->
+                <div id="player1"></div>
+                <div id="player2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" xml="space">
+    // <![CDATA[
+    require(['jquery', 'vpplayer'], function ($) {
+        $(document).ready(function ($) {
+            $("#player1").vpplayer({
+                id: "1",
+                src: "<?php echo $block->getMediaFilePath() ?>",
+                trackTitle: "<?php echo $blog->getCategoryName() ?>",
+                trackName: ""
+            });
+            $("#player2").vpplayer({
+                id: "2",
+                src: "<?php echo $block->getMedia2FilePath() ?>",
+                trackTitle: "<?php echo $blog->getCategoryName() ?>",
+                trackName: ""
+            });
+        });
+    });
+    // ]]>
+</script>

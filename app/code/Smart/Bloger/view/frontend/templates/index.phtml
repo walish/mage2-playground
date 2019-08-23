@@ -1,0 +1,50 @@
+<style>
+    .list {
+        border-bottom: .1px dotted black;
+        padding: 4px;
+        overflow: hidden;
+    }
+    .image {
+        float: left;
+        width: 300px;
+        height: 200px;
+        margin-right: 20px;
+    }
+    .clearfix {
+        overflow: auto;
+    }
+    .list .indexblock a{
+        text-decoration: none;
+    }
+
+
+</style>
+<?php
+/**
+ * @var \Smart\Bloger\Block\Index $block
+ */
+?>
+    <?php  foreach ($block->getNews() as $key=>$post): ?>
+        <div class="list clearfix">
+            <div class="indexblock">
+                <a href="<?php echo $this->getUrl('*/*/detail', array('idpost' => $post->getPostId())); ?> ">
+                    <img src="<?php echo $post->getPostImage(); ?>" class="image"/>
+                    <h2><b><?= $post->getPostName(); ?></b></h2>
+                </a>
+                    <h3>
+                    <p><?=$post->getPostTitle(); ?></p>
+                    <p><?=$post->getPostShortdescription(); ?></p>
+                    </h3>
+
+            </div>
+        </div>
+        <hr>
+    <?php endforeach;?>
+
+
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom">
+        <?php echo $block->getPagerHtml(); ?>
+    </div>
+<?php endif ?>
+

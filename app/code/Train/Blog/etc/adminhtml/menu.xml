@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Train_Blog::blog" title="Manage Post" module="Train_Blog" sortOrder="51" resource="Train_Blog::blog"/>
+        <add id="Train_Blog::post" title="Post" module="Train_Blog" sortOrder="10" action="train_blog/post" resource="Train_Blog::post" parent="Train_Blog::blog"/>
+        <add id="Train_Blog::category" title="Category" module="Train_Blog" sortOrder="20" action="train_blog/category" resource="LG_Train::category" parent="Train_Blog::blog"/>
+        <add id="Train_Blog::product" title="Product" module="Train_Blog" sortOrder="21" action="train_blog/product" resource="Train_Blog::product" parent="Train_Blog::blog"/>
+        <add id="Train_Blog::setting" title="Setting" module="Train_Blog" sortOrder="99"  action="adminhtml/system_config/edit/section/blog" resource="Train_Blog::setting" parent="Train_Blog::blog"/>
+    </menu>
+</config>

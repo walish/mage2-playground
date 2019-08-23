@@ -1,0 +1,32 @@
+<style>
+    .clearfix {
+        overflow: auto;
+    }
+    .image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .listproduct {
+        border: 3px solid white;
+        padding: 4px;
+        overflow: hidden;
+        width: 190px;
+        height: 400px;
+        float: left;
+    }
+
+</style>
+<hr>
+<?php
+foreach ($block->getProductCollection() as $key => $collection) { ?>
+    <div class="listproduct clearfix ">
+        <a href="">
+            <img src="http://lg.local/media/catalog/tmp/category/<?php echo $collection->getProductImage() ?>"
+                 class="image"/></a>
+            <h2><a href=""><?= $collection->getProductName() ?></a></h2>
+        <button>Add to cart</button>
+    </div>
+    <?php
+}
+?>

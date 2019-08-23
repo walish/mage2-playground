@@ -1,0 +1,415 @@
+    <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                smart_bloger_post_form.smart_bloger_post_form_data_source
+            </item>
+        </item>
+
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button class="Smart\Bloger\Block\Adminhtml\Post\Edit\BackButton" name="back"/>
+            <button class="Smart\Bloger\Block\Adminhtml\Post\Edit\DeleteButton" name="delete"/>
+            <button class="Smart\Bloger\Block\Adminhtml\Post\Edit\SaveButton" name="save"/>
+            <button class="Smart\Bloger\Block\Adminhtml\Post\Edit\SaveAndContinueButton" name="save_and_continue"/>
+        </buttons>
+        <namespace>smart_bloger_post_form</namespace>
+        <dataScope>data</dataScope>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>
+                smart_bloger_post_form.smart_bloger_post_form_data_source
+            </dep>
+        </deps>
+        <layout>
+            <navContainerName>lefttt</navContainerName>
+            <type>tabs</type>
+        </layout>
+    </settings>
+    <dataSource name="smart_bloger_post_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Smart\Bloger\Model\Post\DataProvider" name="smart_bloger_post_form_data_source">
+            <settings>
+                <requestFieldName>post_id</requestFieldName>
+                <primaryFieldName>post_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+<!--        <settings>-->
+<!--            <collapsible>true</collapsible>-->
+<!--            <label translate="true">Post Information</label>-->
+<!--        </settings>-->
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Post Information</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+
+        <field name="category_id" formElement="multiselect" sortOrder="4"  >
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Smart\Bloger\Block\Helper\Selectidcat</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Choose Category</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>category_id</dataScope>
+            </settings>
+        </field>
+
+        <field name="product_id" formElement="multiselect" sortOrder="5">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Smart\Bloger\Block\Helper\Selectidproduct</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Choose Related Product</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>product_id</dataScope>
+            </settings>
+        </field>
+
+        <field name="post_name" formElement="input" sortOrder="6">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">post_name</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">post_name</label>
+                <dataScope>post_name</dataScope>
+            </settings>
+        </field>
+        <field name="post_url" formElement="input" sortOrder="7">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">URL</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">URL</label>
+                <dataScope>post_url</dataScope>
+            </settings>
+        </field>
+        <field name="post_title" sortOrder="11" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string"> Title</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>textarea</dataType>
+                <label translate="true">Title</label>
+                <dataScope>post_title</dataScope>
+            </settings>
+        </field>
+        <field name="post_shortdescription" formElement="input" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Short Description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+
+
+<!--        <field name="post_description" formElement="input" sortOrder="15">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="label" xsi:type="string" translate="true"> Description</item>-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="formElement" xsi:type="string">wysiwyg</item>-->
+<!--                    <item name="template" xsi:type="string">ui/form/field</item>-->
+<!--                    <item name="wysiwyg" xsi:type="boolean">true</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+        <field formElement="input" name="post_tags" sortOrder="12">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Tags</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Post Tags</label>
+                <dataScope>post_tags</dataScope>
+            </settings>
+        </field>
+
+<!--        <field name="post_image" formElement="fileUploader">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">string</item>-->
+<!--                    <item name="source" xsi:type="string">post</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Image</item>-->
+<!--                    <item name="visible" xsi:type="boolean">true</item>-->
+<!--                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
+<!--                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>-->
+<!--                    <item name="required" xsi:type="boolean">false</item>-->
+<!--                    <item name="sortOrder" xsi:type="number">40</item>-->
+<!--                    <item name="notice" xsi:type="string" translate="true">Allowed file types: jpeg, gif, png.</item>-->
+<!--                    <item name="uploaderConfig" xsi:type="array">-->
+<!--                        <item name="url" xsi:type="url" path="smart_bloger/post/upload"/>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+<!--        <field name="post_image" sortOrder="40" formElement="fileUploader">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="source" xsi:type="string">category</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--            <settings>-->
+<!--                <elementTmpl>ui/form/element/uploader/uploader</elementTmpl>-->
+<!--                <dataType>string</dataType>-->
+<!--                <label translate="true">Category Image</label>-->
+<!--                <visible>true</visible>-->
+<!--                <required>false</required>-->
+<!--            </settings>-->
+<!--            <formElements>-->
+<!--                <fileUploader>-->
+<!--                    <settings>-->
+<!--                        <required>false</required>-->
+<!--                        <uploaderConfig>-->
+<!--                            <param xsi:type="url" name="url" path="smart_bloger/post/upload"/>-->
+<!--                        </uploaderConfig>-->
+<!--                        <previewTmpl>Magento_Catalog/image-preview</previewTmpl>-->
+<!--                    </settings>-->
+<!--                </fileUploader>-->
+<!--            </formElements>-->
+<!--        </field>-->
+
+<!--        <field name="post_image">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">string</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Image</item>-->
+<!--                    <item name="visible" xsi:type="boolean">true</item>-->
+<!--                    <item name="formElement" xsi:type="string">fileUploader</item>-->
+<!--                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
+<!--                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>-->
+<!--                    <item name="required" xsi:type="boolean">true</item>-->
+<!--                    <item name="validation" xsi:type="array">-->
+<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
+<!--                    </item>-->
+<!--                    <item name="uploaderConfig" xsi:type="array">-->
+<!--                        <item name="url" xsi:type="url" path="smart_bloger/post/upload"/>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+
+        <!-- chuan :))-->
+        <field name="post_image" sortOrder="15" formElement="fileUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">post_image</item>
+                </item>
+            </argument>
+            <settings>
+                <elementTmpl>ui/form/element/uploader/uploader</elementTmpl>
+                <dataType>string</dataType>
+                <label translate="true">Post Image</label>
+                <visible>true</visible>
+                <required>false</required>
+            </settings>
+            <formElements>
+                <fileUploader>
+                    <settings>
+                        <visible>true</visible>
+                        <required>false</required>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="catalog/category_image/upload"/>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+                    </settings>
+                </fileUploader>
+            </formElements>
+        </field>
+
+<!--        <field name="image" formElement="fileUploader">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">string</item>-->
+<!--                    <item name="source" xsi:type="string">post_image</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Image</item>-->
+<!--                    <item name="visible" xsi:type="boolean">true</item>-->
+<!--                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
+<!--                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>-->
+<!--                    <item name="required" xsi:type="boolean">false</item>-->
+<!--                    <item name="sortOrder" xsi:type="number">40</item>-->
+<!--                    <item name="notice" xsi:type="string" translate="true">Allowed file types: jpeg, gif, png.</item>-->
+<!--                    <item name="uploaderConfig" xsi:type="array">-->
+<!--                        <item name="url" xsi:type="url" path="bloger/post/upload"/>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+        <field name="post_created" sortOrder="17">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Created</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="post_updated" sortOrder="18">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Updated</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="post_status" sortOrder="9" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Status</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Status</label>
+                <dataScope>post_status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+        <fieldset name="description" sortOrder="100">
+            <settings>
+                <collapsible>true</collapsible>
+                <label translate="true">Description</label>
+            </settings>
+            <field name="post_description" formElement="wysiwyg">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">description</item>
+                    </item>
+                </argument>
+                <settings>
+                    <additionalClasses>
+                        <class name="admin__field-wide">true</class>
+                    </additionalClasses>
+                    <label/>
+                    <dataScope>post_description</dataScope>
+                </settings>
+                <formElements>
+                    <wysiwyg>
+                        <settings>
+                            <wysiwyg>true</wysiwyg>
+                        </settings>
+                    </wysiwyg>
+                </formElements>
+            </field>
+        </fieldset>
+        <modal name="test_modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="onCancel" xsi:type="string">actionCancel</item>
+                    <item name="options" xsi:type="array">
+                        <item name="buttons" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="text" xsi:type="string">Cancel</item>
+                                <item name="class" xsi:type="string">action-secondary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">actionCancel</item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="text" xsi:type="string">Done</item>
+                                <item name="class" xsi:type="string">action-primary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">actionDone</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+
+            <columns name="spinner_columns">
+                <column name="category_id" sortOrder="10">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="filter" xsi:type="string">textRange</item>
+                            <item name="sorting" xsi:type="string">asc</item>
+                            <item name="label" xsi:type="string" translate="true">ID</item>
+                        </item>
+                    </argument>
+                </column>
+
+                <column name="category_created" class="Magento\Ui\Component\Listing\Columns\Date" sortOrder="50">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="filter" xsi:type="string">dateRange</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                            <item name="dataType" xsi:type="string">date</item>
+                            <item name="label" xsi:type="string" translate="true">Created</item>
+                        </item>
+                    </argument>
+                </column>
+            </columns>
+
+        </modal>
+
+        <button name="modal_button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="title" xsi:type="string">Open modal</item>
+                    <item name="actions" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="targetName" xsi:type="string">${ $.parentName}.test_modal</item>
+                            <item name="actionName" xsi:type="string">openModal</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </button>
+</form>

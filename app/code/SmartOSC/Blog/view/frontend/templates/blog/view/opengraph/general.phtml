@@ -1,0 +1,9 @@
+<meta property="og:type" content="og:product" />
+<meta property="og:title" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getBlog()->getBlogName()); ?>" />
+<meta property="og:image" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getAvatarUrl()); ?>" />
+<meta property="og:description" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getBlog()->getValue()); ?>" />
+<meta property="og:url" content="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getBlog()->getBlogUrl()); ?>" />
+<?php if ($priceAmount = $block->getBlog()->getPrice()):?>
+    <meta property="product:price:amount" content="<?php /* @escapeNotVerified */ echo $priceAmount; ?>"/>
+    <?php echo $block->getChildHtml('meta.currency'); ?>
+<?php endif;?>

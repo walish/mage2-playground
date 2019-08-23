@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="release" label="Release Type" modelInstance="SmartOSC\Blogs\Model\Product\Type\Blog" indexPriority="61" sortOrder="81" isQty="true">
+        <priceModel instance="SmartOSC\Blogs\Model\Product\Type\Event\Price"/>
+        <customAttributes>
+            <attribute name="is_real_product" value="false"/>
+            <attribute name="refundable" value="true"/>
+        </customAttributes>
+    </type>
+    <composableTypes>
+        <type name="release" />
+    </composableTypes>
+</config>

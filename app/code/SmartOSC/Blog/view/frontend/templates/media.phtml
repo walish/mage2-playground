@@ -1,0 +1,15 @@
+<?php
+$blog = $block->getBlog();
+$cat = $block->getCategory($blog);
+?>
+<?php if ($blog->getId()): ?>
+    <div class="blog-image">
+        <img src="<?php echo $block->getAvatarUrl() ?>" alt="<?php echo $blog->getBlogName(); ?>"/>
+        <div class="page-main">
+            <div class="blog-details-info-top">
+                <h6 class="blog-details-category-name"><?= $cat?$cat->getCategoryName():'' ?></h6>
+                <h1 class="blog-details-title"><?php echo $blog->getBlogName(); ?></h1>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

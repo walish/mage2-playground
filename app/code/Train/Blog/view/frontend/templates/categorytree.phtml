@@ -1,0 +1,47 @@
+<style>
+    .category{
+        border: 1px solid white;
+    }
+    ul li {
+        list-style-type: none;
+        margin-left: 0em;
+        width: 100%;
+        font-size: 19px;
+    }
+</style>
+<?php
+$cat=[];
+foreach ($block->getTree() as $key=>$post){
+    $cat[]=
+        [
+            'id'=>$post->getCategoryId(),
+            'parent_id'=>$post->getParentId(),
+            'name'=>$post->getCategoryName()
+        ];
+}
+?>
+<div>
+    <div>
+        <h2><strong><?= __('Categories') ?></strong></h2>
+    </div>
+    <div>
+        <div class="category">
+            <?php $block-> showCategories($cat,0);?>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

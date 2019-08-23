@@ -1,0 +1,70 @@
+<?php
+$blog = $block->getBlog();
+$date ='';
+if ($blog->getEndTime()){
+    $date = $block->getDateFormat($blog->getStartTime()) . ' - ' . $block->getDateFormat($blog->getEndTime());
+}else{
+    $date = $block->getDateFormat($blog->getStartTime());
+}
+$startTime = $block->getStartTime($blog->getStartTime());
+if ($blog->getId()) {
+    ?>
+    <div class="blog-content">
+        <!--Content-->
+        <?php if($blog->getSelectedProducts()) {
+            foreach ($blog->getSelectedProducts() as $releatedProduct) {
+                $productName = $this->getProductCollection($releatedProduct ); ?>
+            <div class="blog-info">
+                <div class="blog-booking">
+                    <h6 class="blog-start-time"><a style="color: #c8102e" href="<?= $productName->getProductURL()?>"> <?php echo $productName->getName(); ?></a></h6>
+                    <div class="blog-info-field blog-price">
+                        <div class="blog-info-content">
+                            <?php
+                            if ($productName->getPrice() > 0) {
+                                echo $productName->getPrice();
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="register-button">
+                        <?php
+                        if ($blog->getPrice() > 0) {
+                            ?>
+                            <button onclick="location.href='<?php echo $blog->getAddToCartUrl(); ?>'" class="action primary"
+                                    title="<?php echo __('Add to Cart'); ?>">
+                                <?php echo __('Add to Cart') ?>
+                            </button>
+                        <?php } else { ?>
+                            <button onclick="location.href='<?php echo $blog->getRegisterUrl() ?>'" class="action primary"
+                                    title="<?php echo __('Add to Cart'); ?>">
+                                <?php echo __('Add to Cart'); ?>
+                            </button>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        <?php }
+        } ?>
+        <!--Description-->
+        <div class="blog-description">
+            <?php echo $blog->getValue(); ?>
+        </div>
+    </div>
+<?php } ?>
+
+<script type="text/javascript">
+    require(["jquery", "mage/mage", "fancybox"], function ($) {
+        $(document).ready(function () {
+            var inviteForm = $('#blog-invite-form');
+            inviteForm.mage('validation', {});
+
+            $('#invite_friend_button').fancybox({
+                helpers: {
+                    title: null
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,46 @@
+<?php
+/**
+ * @var \Smart\Bloger\Block\Productdetail $block
+ */
+?>
+<?php foreach ($block->getProduct() as $key=>$product):?>
+    <div class="productdt clearfix ">
+        <div class="image  main">
+            <a href="">
+                <img src="<?php echo $product->getProductImage(); ?>" class="image1"/>
+            </a>
+        </div>
+        <div class="content indexblock  media">
+            <h2><b><?= $product->getProductName(); ?></b></h2>
+            <h3>
+                <p>Price: <?= number_format($product->getProductPrice()); ?> VND</p>
+                <p> <?= $product->getProductDescription(); ?></p>
+                <p> <?= ($product->getData('product_Color')); ?></p>
+            </h3>
+        </div>
+    </div>
+
+<?php endforeach; ?>
+<form action="productdetail">
+    <p>QTy</p>
+    <input type="text" value="1" style="width: 40px" name="qty"><br>
+    <button class="btn btn-prime">Add to cart</button>
+</form>
+<hr>
+<style>
+    .productdt{
+        margin-left:10px;
+    }
+    .image img{
+        border:.1px dotted darkgoldenrod;
+        width: 500px;
+        height: 500px;
+        margin-top: -20px;
+    }
+    .image{
+        float: left;
+        margin-right: 10px;
+    }
+
+</style>
+

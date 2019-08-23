@@ -1,0 +1,72 @@
+<?php
+/**
+ * @var \Smart\Bloger\Block\Detail $block
+ */
+?>
+
+<?php foreach ($block->fillterDetailByIdPost() as $key=>$post):?>
+        <h1><?= $post->getPostName(); ?></h1>
+        <div class="list clearfix">
+            <div class="image">
+                <a href="<?php echo $this->getUrl('*/*/productdetail', array('productid' => $post->getProductId())); ?>">
+                    <img src="<?php echo $post->getPostImage(); ?>" class="image1"/>
+                </a>
+            </div>
+            <div class="content indexblock">
+                <h2><b><?= $post->getPostName(); ?></b></h2>
+                <h3>
+                    <p><?=$post->getPostTitle(); ?></p>
+                    <p><?=$post->getPostDescription(); ?></p>
+                </h3>
+            </div>
+        </div>
+
+<?php endforeach; ?>
+<br>
+<h3><b>Related Product</b></h3>
+<?php foreach ($block->getProductByIdPost() as $k=>$v): ?>
+<div class="product">
+     <ul class="relatedpro">
+         <li>
+<!--             <a href="productdetail?productid=--><?//= $v->getProductId();?><!--">-->
+             <a href="<?php echo $this->getUrl('*/*/productdetail', array('productid' => $v->getProductId())); ?>">
+                 <h3><img src="<?= $v->getProductImage() ?>" alt=""></h3><hr>
+                 <h3><b><?= $v->getProductName() ?></b></h3>
+                 <h3><?=  number_format($v->getProductPrice());  ?>vnđ</h3>
+             </a>
+         </li>
+     </ul>
+</div>
+<div class="clear">
+
+</div>
+<?php endforeach;?>
+
+<hr/>
+<style>
+    .product{
+        margin-left:-40px;
+    }
+    ul.relatedpro li{
+        float: left;
+        width: 160px;
+        height: 300px;
+        border: .1px solid bisque;
+        padding: 0;
+        text-align: center;
+        margin: 0 3px;
+    }
+    .image img{
+        width: 600px;
+        height: 300px;
+        margin-top: -30px;
+    }
+    ul.relatedpro li img{
+        width: 100px;
+        height: 160px;
+
+    }
+    ul.relatedpro a{
+        text-decoration: none;
+    }
+</style>

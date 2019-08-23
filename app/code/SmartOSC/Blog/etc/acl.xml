@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="SmartOSC_Blog::blogs" title="Blogs" sortOrder="20">
+                    <resource id="SmartOSC_Blog::manage_blogs" title="Manage Blogs" sortOrder="10"/>
+                        <resource id="SmartOSC_Blog::manage_blogs_save" title="Save Blog" sortOrder="10"/>
+                        <resource id="SmartOSC_Blog::manage_blogs_delete" title="Delete Blog" sortOrder="20" />
+                    <resource id="SmartOSC_Blog::manage_categories" title="Manage Categories" sortOrder="10"/>
+                        <resource id="SmartOSC_Blog::manage_categories_save" title="Save Category" sortOrder="10"/>
+                        <resource id="SmartOSC_Blog::manage_categories_delete" title="Delete Category" sortOrder="20"/>
+                    <resource id="SmartOSC_Blog::settings" title="Settings" sortOrder="10"/>
+                </resource>
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="SmartOSC_Blog::blogs_config" title="Blogs Section"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

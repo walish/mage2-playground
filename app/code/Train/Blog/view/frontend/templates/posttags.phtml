@@ -1,0 +1,17 @@
+
+<style>
+    .posttags{
+        padding-top:40px;
+    }
+
+</style>
+<div class="posttags">
+    <div>
+        <h2><strong><?= __('Tags') ?></strong></h2>
+    </div>
+    <div>
+          <?php foreach ($block->getPostCollection() as $post) {?>
+              <a href="http://lg.local/blog/index/seach?keyword=+<?= $post->getPostTags()?>" style="font-size:120%"> <?= $post->getPostTags()?></a>
+            <?php } ?>
+    </div>
+</div>

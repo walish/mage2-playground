@@ -1,0 +1,72 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smart_bloger_post_listing_data_source" xsi:type="string">Smart\Bloger\Model\ResourceModel\Post\Grid\Collection</item>
+                <item name="smart_bloger_category_listing_data_source" xsi:type="string">Smart\Bloger\Model\ResourceModel\Category\Grid\Collection</item>
+                <item name="smart_bloger_product_listing_data_source" xsi:type="string">Smart\Bloger\Model\ResourceModel\Product\Grid\Collection</item>
+                <item name="smart_bloger_categorypost_listing_data_source" xsi:type="string">Smart\Bloger\Model\ResourceModel\CatPost\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--    Post  -->
+    <virtualType name="Smart\Bloger\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_bloger_post</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Bloger\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+    <!--    catPost  -->
+    <virtualType name="Smart\Bloger\Model\ResourceModel\CatPost\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_bloger_category_post</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Bloger\Model\ResourceModel\CatPost</argument>
+        </arguments>
+    </virtualType>
+    <!--    Category  -->
+    <virtualType name="Smart\Bloger\Model\ResourceModel\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_bloger_category</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Bloger\Model\ResourceModel\Category</argument>
+        </arguments>
+    </virtualType>
+    <!--    Product  -->
+    <virtualType name="Smart\Bloger\Model\ResourceModel\Product\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_bloger_product</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Bloger\Model\ResourceModel\Product</argument>
+        </arguments>
+    </virtualType>
+    <!--    Image  upload  -->
+    <virtualType name="Magento\Catalog\CategoryImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
+            <argument name="basePath" xsi:type="string">catalog/category</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Catalog\Controller\Adminhtml\Category\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+        </arguments>
+    </type>
+<!--    <type name="Smart\Bloger\Model\ImageUploader">-->
+<!--        <arguments>-->
+<!--            &lt;!&ndash; Temporary file stored in pub/media/blog/tmp/image &ndash;&gt;-->
+<!--            <argument name="baseTmpPath" xsi:type="string">blog/tmp/image</argument>-->
+<!--            <argument name="basePath" xsi:type="string">blog/image</argument>-->
+<!--            <argument name="allowedExtensions" xsi:type="array">-->
+<!--                <item name="jpg" xsi:type="string">jpg</item>-->
+<!--                <item name="jpeg" xsi:type="string">jpeg</item>-->
+<!--                <item name="gif" xsi:type="string">gif</item>-->
+<!--                <item name="png" xsi:type="string">png</item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
+
+</config>

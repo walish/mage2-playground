@@ -1,0 +1,58 @@
+<style>
+
+    .image1 {
+        width: 1000px;
+        height: 500px;
+    }
+
+    .clearfix {
+        overflow: auto;
+    }
+
+    .list {
+        border: 3px solid white;
+        padding: 4px;
+        overflow: hidden;
+
+    }
+
+    .image {
+        float: left;
+        width: 200px;
+        height: 200px;
+    }
+
+    .content {
+        padding-left: 250px;
+    }
+
+    .seachbox {
+        width: 940px;
+        height: 35px;
+    }
+
+    button {
+        width: 110px;
+        height: 40px;
+    }
+</style>
+<form method="get" action="<?php echo $this->getUrl('*/*/seach'); ?>">
+    <input type="textbox" name="keyword" placeholder="Search..." class="seachbox" value=" " width="940px">
+    <button class="action primary" title="Submit" type="submit">
+        <span>Seach</span>
+    </button>
+</form>
+
+<?php
+$post = $block->getPost();
+?>
+<div class="clearfix">
+    <h2><strong><?= $post->getPostName() ?></strong></h2>
+    <p><?= $post->getPostTitle() ?></p>
+    <img src="<?= $this->getUrl('http://lg.local/media/catalog/tmp/category/' .$post->getPostImage()) ?>"
+         class="image1"/>
+
+    <p><?= $post->getPostDescription() ?></p>
+</div>
+<hr/>
+

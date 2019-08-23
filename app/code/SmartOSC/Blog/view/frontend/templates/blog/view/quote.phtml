@@ -1,0 +1,11 @@
+<?php
+$blog = $block->getBlog();
+?>
+<div class="blog-quote-info">
+    <div class="quote-content">
+        <p><?php echo $blog->getQuoteBanner(); ?></p>
+    </div>
+    <div class="quote-banner">
+        <img src="<?php echo $block->getQuoteBannerUrl() ?>" alt="<?php echo $blog->getCategoryName(); ?>"/>
+    </div>
+</div>

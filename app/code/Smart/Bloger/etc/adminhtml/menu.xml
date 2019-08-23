@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Smart_Bloger::bloger" title="Smart Bloger" module="Smart_Bloger" sortOrder="51" resource="Smart_Bloger::bloger"/>
+        <add id="Smart_Bloger::post" title="Manage Posts" module="Smart_Bloger" sortOrder="10" action="smart_bloger/post" resource="Smart_Bloger::post" parent="Smart_Bloger::bloger"/>
+        <add id="Smart_Bloger::product" title="Manage Product" module="Smart_Bloger" sortOrder="10" action="smart_bloger/product" resource="Smart_Bloger::product" parent="Smart_Bloger::bloger"/>
+        <add id="Smart_Bloger::category" title="Manage Categogy" module="Smart_Bloger" sortOrder="10" action="smart_bloger/category" resource="Smart_Bloger::category" parent="Smart_Bloger::bloger"/>
+        <add id="Smart_Bloger::blog_configuration" title="Configuration" module="Smart_Bloger" sortOrder="99" parent="Smart_Bloger::bloger" action="adminhtml/system_config/edit/section/bloger" resource="Smart_Bloger::helloworld_configuration"/>
+    </menu>
+</config>

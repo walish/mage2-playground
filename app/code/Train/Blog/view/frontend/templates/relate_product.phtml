@@ -1,0 +1,18 @@
+
+
+<?php
+
+foreach ($block->getProductCollection() as $key => $product) {
+        ?>
+        <div class="list clearfix">
+            <a href="">
+                <img src="http://lg.local/media/catalog/tmp/category/<?php echo $product->getProductImage() ?>"
+                     class="image1"/></a>
+            <div class="content">
+                <h2>
+                    <strong><a href=""><?= $product->getProductName() ?></a></strong>
+                </h2>
+            </div>
+        </div>
+    <?php
+} ?>

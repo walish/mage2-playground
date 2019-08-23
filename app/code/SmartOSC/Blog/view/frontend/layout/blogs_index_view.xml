@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="SmartOSC_Blog::css/jquery.fancybox.css"/>
+        <css src="SmartOSC_Blog::css/blog.css"/>
+        <css src="SmartOSC_Blog::css/bootstrap.css"/>
+        <attribute name="prefix" value="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#"/>
+    </head>
+    <body>
+
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceContainer name="page.top">
+            <container name="blog.info.media" htmlTag="div" htmlClass="blog media" after="blog.info.main">
+                <block class="SmartOSC\Blog\Block\View" name="blog.view.image" template="SmartOSC_Blog::media.phtml" cacheable="false" after="navigation.sections"/>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="head.additional">
+            <block class="SmartOSC\Blog\Block\View" name="opengraph.general"
+                   template="SmartOSC_Blog::blog/view/opengraph/general.phtml">
+                <block class="Magento\Directory\Block\Currency" name="blog.opengraph.currency" as="meta.currency"
+                       template="SmartOSC_Blog::blog/view/opengraph/currency.phtml"/>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <container name="blog.info.main" htmlTag="div" htmlClass="blog-info-main" before="-">
+                <block class="SmartOSC\Blog\Block\View" name="blogs_index_view" template="view.phtml"
+                       cacheable="false"/>
+            </container>
+
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="blog.view.footer.info" template="SmartOSC_Blog::blog/view/footer.phtml" cacheable="false" before="-">
+                <block class="SmartOSC\Blog\Block\View" name="blog.view.quote" template="SmartOSC_Blog::blog/view/quote.phtml" cacheable="false" before="-"/>
+                <block class="SmartOSC\Blog\Block\View" name="blog.view.av" template="SmartOSC_Blog::blog/view/av.phtml" cacheable="false" after="blog.view.quote"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var \Smart\Bloger\Block\Index $block
+ */
+$cat=[];
+foreach ($block->getCatCollection() as $key=>$post){
+    $cat[]=
+        [
+            'id'=>$post->getCategoryId(),
+            'parent_id'=>$post->getParentId(),
+            'name'=>$post->getCategoryName()
+        ];
+}
+//    echo '<pre/>';master122
+//    print_r($cat);master122
+?>
+<form action="<?php echo $this->getUrl('*/*/search'); ?> ">
+    <input type="text" name="key" placeholder="search here...">
+    <button>Search</button>
+</form>
+<div class="a">
+    <?php   $block->showCategories($cat,0,''); ?>
+</div>
+
+<style>
+    .a{
+        padding: 20px 0;
+        padding-right: 10px;
+        border: .1px dotted gray;
+        width: 200px;
+        margin-right: 10px;
+    }
+        ul li {
+            list-style-type: none;
+            width:200px;
+            /*border-bottom: #0a6c9f 1px solid;*/
+        }
+    .a ul li a{
+        text-decoration: none;
+        font-size: 20px;
+    }
+</style>

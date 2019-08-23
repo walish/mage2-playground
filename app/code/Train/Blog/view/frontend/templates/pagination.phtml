@@ -1,0 +1,8 @@
+<style>
+    .pagination{
+        float: right;
+    }
+</style>
+<?php if ($block->getPagerHtml()): ?>
+    <div class="pagination"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>

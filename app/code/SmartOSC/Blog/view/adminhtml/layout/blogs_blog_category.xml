@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="SmartOSC\Blog\Block\Adminhtml\Blog\Edit\Tab\Categories" name="blogs.edit.tab.categorygrid"  as="grid"/>
+                <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="categorygrid_grid_serializer">
+                    <arguments>
+                        <argument name="grid_block" xsi:type="string">blogs.edit.tab.categorygrid</argument>
+                        <argument name="callback" xsi:type="string">getSelectedCategories</argument>
+                        <argument name="input_element_name" xsi:type="string">selected_categories</argument>
+                        <argument name="reload_param_name" xsi:type="string">categories_selected</argument>
+                    </arguments>
+                </block>
+    </container>
+</layout>

@@ -1,0 +1,56 @@
+<style>
+    .list {
+        border: 3px solid white;
+        padding: 4px;
+        overflow: hidden;
+    }
+
+    .image1 {
+        padding-top: 23px;
+        float: left;
+        width: 200px;
+        height: 200px;
+    }
+
+    .content {
+        padding-left: 250px;
+    }
+
+    .clearfix {
+        overflow: auto;
+    }
+    .seachbox {
+        width: 940px;
+        height: 35px;
+    }
+
+    button {
+        width: 110px;
+        height: 40px;
+    }
+</style>
+<form method="get" action="<?php echo $this->getUrl('*/*/seach'); ?>">
+    <input type="textbox" name="keyword" placeholder="Search..." class="seachbox" value=" " width="940px">
+    <button class="action primary" title="Submit" type="submit">
+        <span>Seach</span>
+    </button>
+</form>
+<?php
+foreach ($block->getPostCollection() as $key => $collection) {
+    if($block->Filter($collection->getCategoryId()))
+    {
+        ?>
+        <div class="list clearfix">
+            <a href="<?= $this->getUrl('blog/index/detail', array('id' => $collection->getId())) ?>">
+                <img src="<?= $this->getUrl('http://lg.local/media/catalog/tmp/category/' . $collection->getPostImage()) ?>"
+                     class="image1"/></a>
+            <div class="content">
+                <h2>
+                    <strong><a href="<?= $this->getUrl('blog/index/detail', array('id' => $collection->getId())) ?>"><?= $collection->getPostName() ?></a></strong>
+                </h2>
+                <h3><p><?= $collection->getPostTitle() ?></p></h3>
+            </div>
+        </div>
+    <?php }
+} ?>
+

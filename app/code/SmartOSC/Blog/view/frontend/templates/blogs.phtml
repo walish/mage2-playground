@@ -1,0 +1,67 @@
+<?php
+$helper=$this->helper('SmartOSC\Blog\Helper\Data');
+$blogsJson = $block->getBlogJson();
+$blogs = $block->getPagedBlogs();
+?>
+
+<div class="blog-index page-blogs">
+    <script type='text/javascript'>
+        function viewmode(mode) {
+            var url = '<?php echo $block->getUrl('blogs/index/index'); ?>';
+            url = url + 'mode/' + mode;
+            window.location.href = url;
+        }
+    </script>
+    <div class="box-filter">
+        <form id="top-filter" action="<?php $block->getUrl('blogs/index/index'); ?>" method="post">
+            <input type="text" name="blog" placeholder="Enter Blog Name" class="blog-search control"
+                   value="<?php echo $block->getBlogSearch(); ?>"/>
+            <button class="search-button action primary" type="submit"
+                    title="Search"><?php echo __('Search'); ?></button>
+        </form>
+    </div>
+    <?php if (count($blogs)) { ?>
+        <div class="toolbar"><?php echo $block->getPagerHtml(); ?></div>
+        <div class="blogs wrapper grid blogs-grid blogs-list">
+            <ol class="blogs list items blog-items" id="blogs-list">
+                <?php foreach ($blogs as $blog) { ?>
+                    <li class="item blog blog-item">
+                        <div class="blog-item-info" data-container="blog-grid">
+                            <a href="<?php echo $blog->getBlogUrl(); ?>"
+                               class="blog photo blog-item-photo" title="<?php echo $blog->getBlogName(); ?>">
+                                    <span class="blog-image-container" style="width:240px;">
+                                        <span class="blog-image-wrapper" style="padding-bottom: 75%;">
+                                            <img src="<?php echo $block->getAvatarUrl($blog); ?>"
+                                                 class="blog-image-photo" alt="<?php echo $blog->getBlogName(); ?>"/>
+                                        </span>
+                                    </span>
+                            </a>
+                            <div class="blog details blog-item-details">
+                                <h3 class="blog-title">
+                                    <a href="<?php echo $blog->getBlogUrl(); ?>"
+                                       title="<?php echo $blog->getBlogName(); ?>"><?php echo $blog->getBlogName(); ?></a>
+                                </h3>
+                                <div class="desc">
+                                    <div class="blog-desc std">
+                                        <label><?php echo __('') ?></label>
+                                        <?php echo $blog->getShortContent(); ?>
+                                    </div>
+                                </div>
+                                <div class="link-see-more">
+                                    <a href="<?php echo $blog->getBlogUrl(); ?>"
+                                       title="<?php echo $blog->getBlogName(); ?>"
+                                       class="link-learn"><?php echo __('See More') ?></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <?php } ?>
+            </ol>
+        </div>
+        <div class="toolbar"><?php echo $block->getPagerHtml(); ?></div>
+    <?php } else { ?>
+        <p class="note-msg" style="margin:20px 0;"><?php echo __('There are no post to show.'); ?></p>
+    <?php } ?>
+</div>
+
+

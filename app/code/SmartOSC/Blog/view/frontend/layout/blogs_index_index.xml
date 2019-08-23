@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page layout="2columns-left" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="SmartOSC_Blog::css/blog.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="SmartOSC\Blog\Block\Blogs" name="blogs_index_index" template="blogs.phtml"
+                   cacheable="false"/>
+        </referenceContainer>
+        <referenceBlock name="sidebar.additional" remove="true"/>
+        <referenceContainer name="sidebar.main" htmlTag="div" htmlClass="blog__sidebar-main">
+            <block class="SmartOSC\Blog\Block\Sidebar\CategoryTree" name="blog.sidebar.category.tree"
+                   template="sidebar.phtml"/>
+        </referenceContainer>
+        <!--        <referenceContainer name="sidebar.additional" >-->
+<!--            class="SmartOSC\Blog\Block\Sidebar"-->
+<!--        </referenceContainer>-->
+<!--        <referenceBlock name="sidebar.additional" >-->
+<!--            <block  name="blog.sidebar" template="SmartOSC_Blog::sidebar.phtml"/>-->
+<!--        </referenceBlock>-->
+        <move element="page.main.title" destination="content" before="-"/>
+    </body>
+</page>

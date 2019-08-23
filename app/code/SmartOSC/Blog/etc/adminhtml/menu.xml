@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="SmartOSC_Blog::blogs" title="Blog" module="SmartOSC_Blog" sortOrder="19"
+             resource="SmartOSC_Blog::blogs"/>
+        <add id="SmartOSC_Blog::manage_blogs" title="Manage Blogs" module="SmartOSC_Blog" sortOrder="0"
+             parent="SmartOSC_Blog::blogs" resource="SmartOSC_Blog::manager_blogs" action="blogs/blog"/>
+        <add id="SmartOSC_Blog::manage_categories" title="Manage Categories" module="SmartOSC_Blog" sortOrder="0"
+             parent="SmartOSC_Blog::blogs" resource="SmartOSC_Blog::manage_categories" action="blogs/category"/>
+        <add id="SmartOSC_Blog::settings" title="Settings" module="SmartOSC_Blog" sortOrder="0"
+             parent="SmartOSC_Blog::blogs" resource="SmartOSC_Blog::settings"
+             action="adminhtml/system_config/edit/section/events"/>
+    </menu>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Train_Blog::js/choocategory.js"/>
+        <css src="Train_Blog::css/style.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="train_blog_category_form"/>
+        </referenceContainer>
+    </body>
+</page>
