@@ -1,16 +1,12 @@
 <?php
 
-
 namespace Smart\Bloger\Model\Post;
 
-use Smart\Bloger\Model\ResourceModel\Post\CollectionFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Ui\DataProvider\Modifier\PoolInterface;
-use Magento\Store\Model\StoreManagerInterface;
+use Smart\Bloger\Model\ResourceModel\Post\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-
     protected $collection;
 
     protected $storeManager;
@@ -33,15 +29,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         DataPersistorInterface $dataPersistor,
         array $meta = [],
-        array $data = [],
-        PoolInterface $pool = null
+        array $data = []
     ) {
         $this->collection = $pageCollectionFactory->create();
         $this->dataPersistor = $dataPersistor;
         $this->storeManager=$storeManager;
         $this->catPostFactory = $catPostFactory;
         $this->postproductFactory=$postproductFactory;
-        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data, $pool);
+        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->meta = $this->prepareMeta($this->meta);
     }
 
@@ -78,11 +73,10 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
                 $this->loadedData[$page->getId()] = $page->getData();
                 //$post_image['post_image'][0]['name'] = $page->getPostImage();
                 $post_image['post_image'][0]['url'] = $page->getPostImage();
-                $fullData = $this->loadedData;
             }
 
             $this->loadedData[$page->getId()] = $page->getData();
-
+            $fullData = $this->loadedData;
             $this->loadedData[$page->getId()] = array_merge($fullData[$page->getId()], $post_image);
             //\Zend_Debug::dump($post_image);
            //\Zend_Debug::dump($a);die;
@@ -100,7 +94,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     public function getMediaUrl()
     {
         $mediaUrl = $this->storeManager->getStore()
-                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/tmp/category/';
+                ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/tmp/category/';
         return $mediaUrl;
     }
 }
